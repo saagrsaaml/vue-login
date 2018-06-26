@@ -1,21 +1,23 @@
 import { $http } from '@/axios.auth.js'
 import router from '@/router/'
 
-const signin = async ({commit, dispatch}, authData) => {
+const signup = async ({commit, dispatch}, authData) => {
   try {
     const data = {
-      username: authData.username,
-      password: authData.password
+      email: authData.email,
+      password: authData.password,
+      password_again: authData.confirmPassword,
+      username: authData.username
     }
     const response = await $http({
       method: 'post',
-      url: '/api/v1/auth/login/',
+      url: '/api/v1/auth/signup/',
       data: data
     })
-    if (response.status === 200) {
-      localStorage.setItem('token', response.data.token)
+    if (response.status === 201) {
+      router.replace('/signin')
     } else {
-      router.replace('/login')
+      router.replace('/signin')
     }
     console.log(response)
   } catch (error) {
@@ -23,5 +25,5 @@ const signin = async ({commit, dispatch}, authData) => {
   }
 }
 export default {
-  signin
+  signup
 }

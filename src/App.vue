@@ -1,13 +1,21 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <navbar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import navbar from '@/components/navbar/navbar'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    navbar: navbar
+  },
+  created () {
+    this.$store.dispatch('tryAutoLogin')
+  }
 }
 </script>
 

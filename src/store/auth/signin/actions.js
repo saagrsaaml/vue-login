@@ -1,21 +1,24 @@
 import { $http } from '@/axios.auth.js'
 import router from '@/router/'
 
-const signup = async ({commit, dispatch}, authData) => {
+const signin = async ({commit, dispatch}, authData) => {
   try {
     const data = {
-      email: authData.email,
-      password: authData.password,
-      password_again: authData.confirmPassword,
-      username: authData.username
+      username: authData.username,
+      password: authData.password
     }
     const response = await $http({
       method: 'post',
-      url: '/api/v1/auth/signup/',
+      url: '/api/v1/auth/login/',
       data: data
     })
-    if (response.status === 201) {
-      router.replace('/signin')
+    if (response.status === 200) {
+      localStorage.setItem('token', JSON.stringify(response.data.token))
+      commit('authUser', {
+        token: response.data.token,
+        userId: response.data.token
+      })
+      router.replace('/dashboard')
     } else {
       router.replace('/signin')
     }
@@ -24,6 +27,26 @@ const signup = async ({commit, dispatch}, authData) => {
     console.error(error)
   }
 }
+
+const logout = ({commit, dispatch}) => {
+  commit('clearAuthData')
+  localStorage.removeItem('token')
+  router.replace('/signin')
+}
+
+const tryAutoLogin = ({commit}) => {
+  const token = localStorage.getItem('token')
+  if (!token) {
+    return
+  }
+  const userId = localStorage.getItem('token')
+  commit('authUser', {
+    token: token,
+    userId: userId
+  })
+}
 export default {
-  signup
+  signin,
+  logout,
+  tryAutoLogin
 }

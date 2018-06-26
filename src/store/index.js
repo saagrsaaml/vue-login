@@ -12,15 +12,27 @@ export default new Vuex.Store({
   },
 
   state: {
-
+    idToken: null,
+    userId: null,
+    user: null
   },
 
   getters: {
-
+    isAuthenticated (state) {
+      return state.idToken !== null
+    }
   },
-
   mutations: {
-
+    authUser (state, userData) {
+      state.idToken = userData.token
+      state.userId = userData.userId
+    },
+    storeUser (state, user) {
+      state.user = user
+    },
+    clearAuthData (state) {
+      state.idToken = null
+      state.userId = null
+    }
   }
-
 })
