@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import signup from './auth/'
+import signup from './auth/signup'
 
 Vue.use(Vuex)
 

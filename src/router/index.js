@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import SignupPage from '@/components/auth/signup.vue'
+import SignupPage from '@/components/auth/signup'
 import login from '@/components/login/login.vue'
 
 Vue.use(Router)
