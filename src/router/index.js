@@ -8,6 +8,8 @@ import DashboardPage from '@/components/dashboard/dashboard'
 import UserPage from '@/components/user/user'
 import UserProfilePage from '@/components/user/profile/profile'
 import UserProfileEditPage from '@/components/user/profile/edit/edit'
+import UserHomePage from '@/components/user/home/home'
+import UserProfileHomePage from '@/components/user/profile/home/home'
 
 Vue.use(Router)
 
@@ -56,12 +58,14 @@ export default new Router({
       path: '/user/:id',
       component: UserPage,
       children: [
+        { path: '', component: UserHomePage },
         // Profile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
         {
           path: 'profile',
           component: UserProfilePage,
           children: [
+            { path: '', component: UserProfileHomePage },
             // when /user/:id/profile/edit is matched
             {
               path: 'edit',
