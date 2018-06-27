@@ -1,11 +1,7 @@
 <script>
-import frmInput from '@/components/form/input/input.vue'
 export default {
   name: 'signin',
   template: require('./signin.html'),
-  components: {
-    frmInput: frmInput
-  },
   data () {
     return {
       username: '',
