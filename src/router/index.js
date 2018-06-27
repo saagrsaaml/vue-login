@@ -5,12 +5,9 @@ import HelloWorld from '@/components/HelloWorld'
 import SignupPage from '@/components/auth/signup/signup'
 import SigninPage from '@/components/auth/signin/signin'
 import DashboardPage from '@/components/dashboard/dashboard'
-<<<<<<< HEAD
 import UserPage from '@/components/user/user'
 import UserProfilePage from '@/components/user/profile/profile'
 import UserProfileEditPage from '@/components/user/profile/edit/edit'
-=======
->>>>>>> 025b753d70e8b5bc1b2ac362ac5fcb7ba202c3fc
 
 Vue.use(Router)
 
@@ -55,14 +52,21 @@ export default new Router({
         }
       }
     },
-    { path: '/user/:id', component: UserPage,
+    {
+      path: '/user/:id',
+      component: UserPage,
       children: [
         // Profile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
-        { path: 'profile', component: UserProfilePage,
+        {
+          path: 'profile',
+          component: UserProfilePage,
           children: [
             // when /user/:id/profile/edit is matched
-            { path: 'edit', component: UserProfileEditPage },
+            {
+              path: 'edit',
+              component: UserProfileEditPage
+            }
           ]
         }
       ]
