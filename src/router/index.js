@@ -73,7 +73,14 @@ export default new Router({
             }
           ]
         }
-      ]
+      ],
+      beforeEnter (to, from, next) {
+        if (store.state.idToken) {
+          next()
+        } else {
+          next('/signin')
+        }
+      }
     }
   ]
 })
