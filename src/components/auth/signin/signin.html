@@ -2,7 +2,7 @@
   <h1>Login Page</h1>
   <form @submit.prevent="onSubmit">
    <frm-input v-bind:value="{username: username, type: 'text', placeholder: 'enter username'}" v-on:input="username = arguments[0]"></frm-input>
-   <frm-input v-bind:value="{username: password, type: 'password', placeholder: 'enter password'}" v-on:input="password = arguments[0]"></frm-input>
+   <frm-input v-bind:value="{password: password, type: 'password', placeholder: 'enter password'}" v-on:input="password = arguments[0]"></frm-input>
    <button type="submit" value="login" >LOGIN</button>
   </form>
 </div>
