@@ -1,7 +1,7 @@
 <div id="home">
   <h2>Profile Home {{ $route.params.id }}</h2>
-  USERNAME: {{ authUser.username }}<br><br>
-  FIRST NAME: {{ authUser.first_name }}<br><br>
-  LAST NAME: {{ authUser.last_name }}<br><br>
-  EMAIL: {{ authUser.email }}
+  <div v-if="authUser.username">USERNAME: <span v-html="authUser.username"></span>
+  <div v-if="authUser.first_name">FIRST NAME: <span v-if="authUser.first_name" v-html="authUser.first_name"></span></div>
+  <div v-if="authUser.last_name">LAST NAME: <span v-if="authUser.last_name" v-html="authUser.last_name"></span></div>
+  <div v-if="authUser.email">EMAIL: <span v-if="authUser.email" v-html="authUser.email"></span></div></div>
 </div>
