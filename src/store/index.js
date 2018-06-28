@@ -12,38 +12,41 @@ export default new Vuex.Store({
   },
 
   state: {
-    idToken: null,
-    userId: null,
-    username: null,
-    first_name: null,
-    last_name: null,
-    email: null
+    authUser: {
+      idToken: null,
+      userId: null,
+      username: null,
+      first_name: null,
+      last_name: null,
+      email: null
+    }
   },
 
   getters: {
     isAuthenticated (state) {
-      return state.idToken !== null
-    }
+      return state.authUser.idToken !== null
+    },
+    authUser: state => state.authUser
   },
   mutations: {
     authUser (state, userData) {
-      state.idToken = userData.token
-      state.userId = userData.userId
-      state.username = userData.username
-      state.first_name = userData.first_name
-      state.last_name = userData.last_name
-      state.email = userData.email
+      state.authUser.idToken = userData.token
+      state.authUser.userId = userData.userId
+      state.authUser.username = userData.username
+      state.authUser.first_name = userData.first_name
+      state.authUser.last_name = userData.last_name
+      state.authUser.email = userData.email
     },
     storeUser (state, username) {
-      state.username = username
+      state.authUser.username = username
     },
     clearAuthData (state) {
-      state.idToken = null
-      state.userId = null
-      state.username = null
-      state.first_name = null
-      state.last_name = null
-      state.email = null
+      state.authUser.idToken = null
+      state.authUser.userId = null
+      state.authUser.username = null
+      state.authUser.first_name = null
+      state.authUser.last_name = null
+      state.authUser.email = null
     }
   }
 })

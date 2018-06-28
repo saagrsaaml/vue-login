@@ -25,7 +25,7 @@ export default new Router({
       path: '/signin',
       component: SigninPage,
       beforeEnter (to, from, next) {
-        if (store.state.idToken) {
+        if (store.state.authUser.idToken) {
           next('/dashboard')
         } else {
           next()
@@ -36,7 +36,7 @@ export default new Router({
       path: '/signup',
       component: SignupPage,
       beforeEnter (to, from, next) {
-        if (store.state.idToken) {
+        if (store.state.authUser.idToken) {
           next('/dashboard')
         } else {
           next()
@@ -47,7 +47,7 @@ export default new Router({
       path: '/dashboard',
       component: DashboardPage,
       beforeEnter (to, from, next) {
-        if (store.state.idToken) {
+        if (store.state.authUser.idToken) {
           next()
         } else {
           next('/signin')
@@ -75,7 +75,7 @@ export default new Router({
         }
       ],
       beforeEnter (to, from, next) {
-        if (store.state.idToken) {
+        if (store.state.authUser.idToken) {
           next()
         } else {
           next('/signin')
