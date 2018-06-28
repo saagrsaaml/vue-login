@@ -1,5 +1,6 @@
 import { $http } from '@/axios.auth.js'
 import router from '@/router/'
+import { app } from '@/app.config'
 
 const signin = async ({commit, dispatch}, authData) => {
   try {
@@ -9,7 +10,7 @@ const signin = async ({commit, dispatch}, authData) => {
     }
     const response = await $http({
       method: 'post',
-      url: '/api/v1/auth/login/',
+      url: app.SIGNIN,
       data: data
     })
     if (response.status === 200) {
