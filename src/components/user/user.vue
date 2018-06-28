@@ -1,6 +1,7 @@
 <script>
 export default {
   template: require('./user.html'),
-  name: 'user'
+  name: 'user',
+  props: ['id']
 }
 </script>

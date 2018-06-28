@@ -4,5 +4,5 @@
   <div v-if="authUser.first_name">FIRST NAME: <span v-if="authUser.first_name" v-html="authUser.first_name"></span></div>
   <div v-if="authUser.last_name">LAST NAME: <span v-if="authUser.last_name" v-html="authUser.last_name"></span></div>
   <div v-if="authUser.email">EMAIL: <span v-if="authUser.email" v-html="authUser.email"></span></div></div>
-  <router-link :to="{ name: 'editUser', params: { id: 1 }}">Edit Profile</router-link>
+  <router-link :to="{ name: 'editUser', params: { id: authUser.userId }}">Edit Profile</router-link>
 </div>

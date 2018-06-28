@@ -3,6 +3,8 @@ import Vue from 'vue'
 import signup from './auth/signup'
 import signin from './auth/signin'
 import user from './user'
+import { $http } from '@/axios.auth.js'
+import { app } from '@/app.config'
 
 Vue.use(Vuex)
 
@@ -29,6 +31,37 @@ export default new Vuex.Store({
       return state.authUser.idToken !== null
     },
     authUser: state => state.authUser
+  },
+  actions: {
+    async updateAuthUser ({commit, dispatch}, authData) {
+      try {
+        const response = await $http({
+          method: 'patch',
+          url: `${app.USER}${authData.userid}/`,
+          data: authData.formData,
+          // params: {
+          //   ID: 1
+          // }
+        })
+        console.log(response)
+        // if (response.status === 200) {
+        //   commit('authUser', {
+        //     token: response.data.token,
+        //     userId: response.data.user_id,
+        //     first_name: response.data.first_name,
+        //     last_name: response.data.last_name,
+        //     username: response.data.username,
+        //     email: response.data.email
+        //   })
+        //   router.replace('/dashboard')
+        // } else {
+        //   router.replace('/signin')
+        // }
+        // console.log(response)
+      } catch (error) {
+        console.error(error)
+      }
+    }
   },
   mutations: {
     authUser (state, userData) {

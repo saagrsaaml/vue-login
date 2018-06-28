@@ -57,20 +57,23 @@ export default new Router({
     {
       path: '/user/:id',
       component: UserPage,
+      props: true,
       children: [
-        { path: '', component: UserHomePage },
+        { path: '', component: UserHomePage, props: true },
         // Profile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
         {
           path: 'profile',
           component: UserProfilePage,
+          props: true,
           children: [
-            { path: '', component: UserProfileHomePage },
+            { path: '', component: UserProfileHomePage, props: true,},
             // when /user/:id/profile/edit is matched
             {
               path: 'edit',
               name: 'editUser',
-              component: UserProfileEditPage
+              component: UserProfileEditPage,
+              props: true
             }
           ]
         }
