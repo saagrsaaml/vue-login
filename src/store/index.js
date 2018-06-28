@@ -2,13 +2,15 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import signup from './auth/signup'
 import signin from './auth/signin'
+import user from './user'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     signup: signup,
-    signin: signin
+    signin: signin,
+    user: user
   },
 
   state: {
