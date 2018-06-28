@@ -11,6 +11,6 @@ const getHeader = () => {
 }
 
 export const $http = axios.create({
-  baseURL: app.APIENDPOINT,
+  baseURL: app.API_DEV,
   ...(window.localStorage.getItem('token') ? { headers: getHeader() } : {})
 })
