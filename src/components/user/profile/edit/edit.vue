@@ -39,16 +39,8 @@ export default {
           gender: this.gender
         }
       }
-      const formData = {
-        username: this.username,
-        email: this.email,
-        salutation: this.salutation,
-        first_name: this.first_name,
-        last_name: this.last_name,
-        gender: this.gender
-      }
       console.log(data)
-      // this.$store.dispatch('updateAuthUser', data)
+      this.$store.dispatch('updateAuthUser', data)
     }
   }
 }
