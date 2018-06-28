@@ -14,7 +14,10 @@ export default new Vuex.Store({
   state: {
     idToken: null,
     userId: null,
-    user: null
+    username: null,
+    first_name: null,
+    last_name: null,
+    email: null
   },
 
   getters: {
@@ -26,13 +29,21 @@ export default new Vuex.Store({
     authUser (state, userData) {
       state.idToken = userData.token
       state.userId = userData.userId
+      state.username = userData.username
+      state.first_name = userData.first_name
+      state.last_name = userData.last_name
+      state.email = userData.email
     },
-    storeUser (state, user) {
-      state.user = user
+    storeUser (state, username) {
+      state.username = username
     },
     clearAuthData (state) {
       state.idToken = null
       state.userId = null
+      state.username = null
+      state.first_name = null
+      state.last_name = null
+      state.email = null
     }
   }
 })

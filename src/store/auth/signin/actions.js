@@ -17,7 +17,11 @@ const signin = async ({commit, dispatch}, authData) => {
       localStorage.setItem('token', JSON.stringify(response.data.token))
       commit('authUser', {
         token: response.data.token,
-        userId: response.data.token
+        userId: response.data.user_id,
+        first_name: response.data.first_name,
+        last_name: response.data.last_name,
+        username: response.data.username,
+        email: response.data.email
       })
       router.replace('/dashboard')
     } else {
