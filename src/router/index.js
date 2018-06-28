@@ -69,6 +69,7 @@ export default new Router({
             // when /user/:id/profile/edit is matched
             {
               path: 'edit',
+              name: 'editUser',
               component: UserProfileEditPage
             }
           ]
