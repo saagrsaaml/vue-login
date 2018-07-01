@@ -15,6 +15,7 @@ export default {
     }
   },
   beforeMount () {
+    this.$store.dispatch('getAuthUser', this.id)
     let user = this.$store.getters.authUser
     this.email = user.email
     this.username = user.username

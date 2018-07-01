@@ -34,6 +34,30 @@ export default new Vuex.Store({
     authUser: state => state.authUser
   },
   actions: {
+    async getAuthUser ({commit, dispatch}, userID) {
+      try {
+        const response = await $http({
+          method: 'get',
+          url: `${app.USER}${userID}/`
+        })
+        console.log(response)
+        if (response.status === 200) {
+          commit('authUser', {
+            token: response.data.token,
+            userId: response.data.user_id,
+            first_name: response.data.first_name,
+            last_name: response.data.last_name,
+            username: response.data.username,
+            email: response.data.email
+          })
+          // router.replace('/dashboard')
+        } else {
+          // router.replace('/signin')
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async updateAuthUser ({commit, dispatch}, authData) {
       try {
         const response = await $http({
