@@ -14,13 +14,13 @@ export default {
       gender: ''
     }
   },
+  watch: {
+    id: function () {
+      this.getUser()
+    }
+  },
   beforeMount () {
-    this.$store.dispatch('getAuthUser', this.id)
-    let user = this.$store.getters.authUser
-    this.email = user.email
-    this.username = user.username
-    this.first_name = user.first_name
-    this.last_name = user.last_name
+    this.getUser()
   },
   computed: {
     ...mapGetters([
@@ -28,6 +28,14 @@ export default {
     ])
   },
   methods: {
+    getUser () {
+      this.$store.dispatch('getAuthUser', this.id)
+      let user = this.$store.getters.authUser
+      this.email = user.email
+      this.username = user.username
+      this.first_name = user.first_name
+      this.last_name = user.last_name
+    },
     async onSubmit () {
       const data = {
         userid: this.id,
