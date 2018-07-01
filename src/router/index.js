@@ -67,7 +67,7 @@ export default new Router({
           component: UserProfilePage,
           props: true,
           children: [
-            { path: '', component: UserProfileHomePage, props: true,},
+            { path: '', component: UserProfileHomePage, props: true },
             // when /user/:id/profile/edit is matched
             {
               path: 'edit',
